@@ -65,3 +65,6 @@ typings/
 
 # IDE environment
 .vscode
+
+# Jetbrain environment
+.idea
