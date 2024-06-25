@@ -72,7 +72,7 @@ const config = {
   },
   kafkaConfig: {
     clientId: serverName,
-    brokers: process.env.KAFKA_BROKERS.split(','),
+    // brokers: process.env.KAFKA_BROKERS.split(','),
     ssl: false,
     sasl: process.env.KAFKA_SASL_OK === 'yes' ? {
       mechanism: process.env.KAFKA_MECHANISM,

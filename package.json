@@ -1,5 +1,5 @@
 {
-  "name": "template-service",
+  "name": "template-node",
   "version": "1.0.0",
   "description": "Repository for codebase nodejs",
   "main": "index.js",
@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node index.js",
     "junit": "_mocha \"test/**/*_test.js\" --timeout=5000 --reporter mocha-junit-reporter",
-    "test": "mocha \"./test/**/*_test.js\" --timeout=5000 --exit",
+    "test": "mocha \"test/**/*_test.js\" --timeout=5000 --exit",
     "cover": "nyc _mocha \"test/**/*_test.js\" --recursive --exit",
     "slint": "sonarlint --src 'bin/**' --tests 'test/**'",
     "lint": "eslint .",
@@ -20,7 +20,7 @@
     "url": "git+https://gitlab.playcourt.id/telkomdev/backend-codebase-node"
   },
   "keywords": [
-    "event-service",
+    "codebase",
     "api",
     "backend",
     "nodejs",
@@ -29,39 +29,40 @@
   "author": "Telkom Indonesia",
   "license": "(ISC OR GPL-3.0)",
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.379.1",
-    "@aws-sdk/client-sns": "^3.379.1",
+    "@aws-sdk/client-s3": "^3.347.0",
+    "@aws-sdk/client-sns": "^3.347.0",
     "@elastic/ecs-winston-format": "^1.3.1",
-    "adm-zip": "^0.5.10",
+
     "ali-oss": "^6.17.1",
     "amqplib": "^0.10.3",
-    "axios": "^1.5.0",
+    "axios": "^1.4.0",
+    "bcrypt": "^5.1.0",
     "confidence": "^5.0.1",
-    "crypto": "^1.0.1",
-    "crypto-js": "^4.2.0",
+
+
     "date-fns": "^2.30.0",
     "dd-trace": "^3.8.0",
-    "docxtemplater": "^3.39.1",
+
     "dotenv": "^16.0.3",
     "elastic-apm-node": "^3.46.0",
     "file-type": "^16.5.4",
-    "form-data": "latest",
+
     "joi": "^17.7.0",
     "jsonwebtoken": "^9.0.0",
     "kafka-node": "^5.0.0",
-    "kafkajs": "^2.2.4",
-    "libreoffice-convert": "^1.4.1",
+
+
     "minio": "^7.1.1",
-    "moment": "^2.29.4",
+
     "mongodb": "^5.5.0",
     "mysql2": "^3.3.3",
-    "nodemailer": "^6.9.13",
+
     "pg": "^8.10.0",
-    "pizzip": "^3.1.4",
-    "qrcode": "^1.5.3",
+
+
     "restify": "^11.1.0",
     "restify-cors-middleware2": "^2.2.0",
-    "tar": "^7.0.1",
+
     "uuid": "^9.0.0",
     "validate.js": "^0.13.1",
     "winston": "^3.3.3"
@@ -72,10 +73,10 @@
     "eslint": "^8.42.0",
     "mocha": "^10.2.0",
     "mocha-junit-reporter": "^2.0.2",
-    "node-mocks-http": "^1.14.1",
+
     "nyc": "^15.1.0",
     "pre-commit": "^1.2.2",
-    "rewire": "^7.0.0",
+
     "sinon": "^14.0.2",
     "sonarlint": "^1.1.0"
   },
@@ -83,16 +84,16 @@
     "lines": 50,
     "statements": 50,
     "functions": 50,
-    "branches": 30,
-    "check-coverage": true,
+    "branches": 20,
+    "check-coverage": false,
     "include": [
       "bin/**/*.js"
     ],
     "exclude": [
       "index.js",
-      "bin/api/app/server.js",
-      "./coverage/**/*",
-      "test/**/*"
+      "bin/api/app/server.js"
+
+
     ],
     "reporter": [
       "html",

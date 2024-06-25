@@ -1,6 +1,6 @@
 const configs = require('./bin/infra/configs/global_config');
-const apm = require('./bin/helpers/components/monitoring/observability');
-apm.init();
+// const apm = require('./bin/helpers/components/monitoring/observability');
+// apm.init();
 
 const logger = require('./bin/helpers/utils/logger');
 const AppServer = require('./bin/app/server');

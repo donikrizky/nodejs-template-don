@@ -1,11 +1,7 @@
 const wrapper = require('../../../../helpers/utils/wrapper');
 const logger = require('../../../../helpers/utils/logger');
-const aliOss = require('../../../../helpers/components/ali-oss/oss');
 const config = require('../../../../infra/configs/global_config');
-const Storaging = require('../../../../helpers/components/storaging/index')
 const { NotFoundError } = require('../../../../helpers/error');
-const { SKALA_KEGIATAN } = require('../../../../helpers/enums/form_pengajuan_enums');
-const storage = parseInt(config.get('/storaging'))
 
 const QueryVenue = require('./query');
 
@@ -15,7 +11,6 @@ class Venue {
 
   constructor(db) {
     this.queryVenue = new QueryVenue(db);
-    this.storaging = new Storaging(storage)
   }
 
   async getVenueById(payload) {
@@ -51,7 +46,6 @@ class Venue {
 
     let pic = {};
     for (let i=0; i < venue.data.length; i++){
-      pic = await this.storaging.getDocument(globalBucketName, venue.data[i].bannerPicPath);
       venue.data[i].bannerPic = pic.data;
     }
 
@@ -69,11 +63,6 @@ class Venue {
     };
     const sort = { createdAt : -1 };
     let query  = {};
-    if (payload.regionType === SKALA_KEGIATAN.PROVINSI) {
-      query = {'region.province.id': payload.regionId}
-    } else if (payload.regionType === SKALA_KEGIATAN.KOTA_KAB) {
-      query = {'region.city.id': payload.regionId}
-    }
     if (payload.except.length > 0) {
       query["venueId"] = { $nin: payload.except }
     }
